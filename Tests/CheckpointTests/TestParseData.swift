@@ -20,5 +20,21 @@ final class TestParseData: XCTestCase {
         XCTAssertEqual(dashAddBlock0, checkpoints.additionalBlocks[0].hs.hex)
         XCTAssertEqual(dashAddBlock1, checkpoints.additionalBlocks[1].hs.hex)
     }
+    
+    func testSafeMainBip44AdditionalBlocks() throws {
+        let safeAddBlock0 = "00000020825bf0aeb3b45ee3f1888ae2c4c64da19b332d7281d8a0b3f4ecf248b2699ea399e9e696fe774676381894ee6483c0b057aad8630822b370cd84ede5d50d88f576aa625af0ff0f1ea9e40600ae500c00e920f497c5492aba1c5fa8badbccff0ebd04a1db0903d20b1c57c5e968060000"
+
+        let checkpoints = try! CheckpointData(blockchain: .safe, network: .main, blockType: .bip44)
+
+        XCTAssertEqual(safeAddBlock0, checkpoints.block.hs.hex)
+    }
+    
+    func testSafeFallbackDateAdditionalBlocks() throws {
+        let safeAddBlock0 = "00000020a37726e39bb3222bd32b6135034e03036f1d9d1091daf65a2f77bd6cbb35de488634eac85c3951073ea55df5c92f4fd93240284f32ea99ce2478ef0973e0cc2b98850f6300000000ac6e8505ad943f005f105701936837196a1bcd75b1a2a547265c22fc974e72ab555195cdb44b4837"
+
+        let checkpoints = try! CheckpointData(blockchain: .safe, network: .main, blockType: .bip44, fallbackDate: .date_202209)
+
+        XCTAssertEqual(safeAddBlock0, checkpoints.block.hs.hex)
+    }
 
 }

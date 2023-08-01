@@ -5,8 +5,8 @@ public class CheckpointData {
     public let block: Data
     public let additionalBlocks: [Data]
 
-    public init(blockchain: Blockchain, network: Network, blockType: BlockType) throws {
-        let resourcePath = [network.rawValue, blockType.rawValue].joined(separator: "-")
+    public init(blockchain: Blockchain, network: Network, blockType: BlockType, fallbackDate: FallbackDate? = nil) throws {
+        let resourcePath = fallbackDate == nil ? [network.rawValue, blockType.rawValue].joined(separator: "-") : [network.rawValue, fallbackDate?.rawValue ?? ""].joined(separator: "-")
         let subdirectory = ["Assets", blockchain.rawValue].joined(separator: "/")
         guard let checkpoint = Bundle.module.url(forResource: resourcePath, withExtension: "checkpoint", subdirectory: subdirectory) else {
             throw ParseError.invalidUrl
@@ -44,6 +44,7 @@ public extension CheckpointData {
         case dash = "Dash"
         case litecoin = "Litecoin"
         case eCash = "ECash"
+        case safe = "Safe"
     }
 
     enum Network: String {
@@ -59,6 +60,17 @@ public extension CheckpointData {
     enum ParseError: Error {
         case invalidUrl
         case invalidFile
+    }
+    
+    enum FallbackDate: String {
+        case date_202209 = "202209"
+        case date_202210 = "202210"
+        case date_202211 = "202211"
+        case date_202212 = "202212"
+        case date_202301 = "202301"
+        case date_202302 = "202302"
+        case date_202303 = "202303"
+        case date_202304 = "202304"
     }
 
 }
