@@ -71,6 +71,7 @@ public extension CheckpointData {
         case date_202302 = "202302"
         case date_202303 = "202303"
         case date_202304 = "202304"
+        case date_202308 = "202308"
     }
 
 }
