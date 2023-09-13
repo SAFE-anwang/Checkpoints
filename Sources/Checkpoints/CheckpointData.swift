@@ -45,6 +45,7 @@ public extension CheckpointData {
         case litecoin = "Litecoin"
         case eCash = "ECash"
         case safe = "Safe"
+        case dogecoin = "Dogecoin"
     }
 
     enum Network: String {
