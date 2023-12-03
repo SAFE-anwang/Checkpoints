@@ -64,15 +64,10 @@ public extension CheckpointData {
     }
     
     enum FallbackDate: String {
-        case date_202209 = "202209"
-        case date_202210 = "202210"
-        case date_202211 = "202211"
-        case date_202212 = "202212"
-        case date_202301 = "202301"
         case date_202302 = "202302"
-        case date_202303 = "202303"
         case date_202304 = "202304"
-        case date_202308 = "202308"
+        case date_202306 = "202306"
+        case date_202309 = "202309"
     }
 
 }
